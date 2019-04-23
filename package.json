@@ -9,9 +9,11 @@
   "author": "Alexandre Betioli",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
     "http": "0.0.0",
     "mosca": "^2.8.3",
-    "node-red": "^0.20.5"
+    "node-red": "^0.20.5",
+    "node-red-flows-mongo": "^0.5.2"
   }
 }

@@ -1,23 +1,22 @@
 var mosca = require('mosca');
-var config = require("./config");
 
-var start = function() {
-    var server = new mosca.Server(config.mqtt);
+var start = async function(settings) {
+  return new Promise(resolve => {
+    var server = new mosca.Server(settings);
 
     server.on('clientConnected', function(client) {
-        console.log('client connected', client.id);
+        console.log('MQTT client connected', client.id);
     });
-     
+    
     server.on('published', function(packet, client) {
-      console.log('Published', packet.payload);
+      console.log('MQTT Published', packet.payload);
     });
 
     server.on('ready', function() {
-        console.log("mosca ready");
+        console.log("MQTT ready");
+        resolve(server);
     });
-
-    return server;
+  });
 }
-
 
 exports.start = start;

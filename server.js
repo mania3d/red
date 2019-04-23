@@ -18,6 +18,6 @@ app.use(config.nodered.httpNodeRoot,RED.httpNode);
 
 server.listen(config.app.port);
 
-RED.start();
-
-mqtt.start();
+mqtt.start(config.mqtt).then(() => {
+    RED.start();
+});

@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
 const config = {
     app: {
         port: 8000
@@ -5,8 +8,8 @@ const config = {
     mqtt: {
         backend : {
             type: 'mongo',
-            url: 'mongodb://localhost:27017/mqtt',
-            pubsubCollection: 'ascoltatori',
+            url: process.env.MONGODB_URI,
+            pubsubCollection: 'pubsub',
             mongo: {}
         },
         port:1883
@@ -14,8 +17,9 @@ const config = {
     nodered: {
         httpAdminRoot:"/red",
         httpNodeRoot: "/api",
-        userDir:"./.nodered/",
-        functionGlobalContext: { }    // enables global context
+        functionGlobalContext: {}, 
+        storageModule: require("node-red-flows-mongo"),
+        mongoUrl: process.env.MONGODB_URI
     }       
 };
 
