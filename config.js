@@ -9,6 +9,7 @@ const config = {
     },
     nodered: {
         autoInstallModules: true,
+        credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET,
         httpAdminRoot:"/red",
         httpNodeRoot: "/api",
         functionGlobalContext: {}, 
