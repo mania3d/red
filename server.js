@@ -1,7 +1,6 @@
 var http = require('http');
 var express = require("express");
 var RED = require("node-red");
-var mqtt = require("./mqtt");
 var config = require("./config");
 
 var app = express();
@@ -18,6 +17,4 @@ app.use(config.nodered.httpNodeRoot,RED.httpNode);
 
 server.listen(config.app.port);
 
-mqtt.start(config.mqtt).then(() => {
-    RED.start();
-});
+RED.start();
