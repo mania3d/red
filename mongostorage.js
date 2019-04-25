@@ -189,7 +189,7 @@ function getCredentials() {
                 defer.reject(err);
             } else {
                 if (doc && doc.credentials) {
-                    defer.resolve(jconv({$: doc.credentials}));
+                    defer.resolve(jconv(doc.credentials));
                 } else {
                     defer.resolve({});
                 }
@@ -204,7 +204,7 @@ function getCredentials() {
 function saveCredentials(credentials) {
     var defer = when.defer();
     collection().then(function(collection) {
-        collection.updateOne({appname:appname},{$set: {"credentials":bconv(credentials['$'])}},{upsert:true},function(err) {
+        collection.updateOne({appname:appname},{$set: {"credentials":bconv(credentials)}},{upsert:true},function(err) {
             if (err) {
                 defer.reject(err);
             } else {

@@ -1,4 +1,5 @@
 var path = require('path');
+var when = require('when');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -9,9 +10,13 @@ const config = {
     },
     nodered: {
         autoInstallModules: true,
-        credentialSecret: process.env.NODE_RED_CREDENTIAL_SECRET,
+        credentialSecret: false,
         httpAdminRoot:"/red",
         httpNodeRoot: "/api",
+        httpNodeCors: {
+            origin: "*",
+            methods: "GET,PUT,POST,DELETE"
+        },
         functionGlobalContext: {}, 
         mongoUrl: process.env.MONGO_URL,
         storageModule: require("./mongostorage")
