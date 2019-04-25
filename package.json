@@ -14,6 +14,7 @@
     "mongodb": "^3.2.3",
     "node-red": "^0.20.5",
     "node-red-contrib-mqtt-broker": "~0.2.4",
+    "node-red-contrib-trello-functions": "~2.8.0",
     "node-red-mongodb": "0.0.18",
     "util": "^0.11.1",
     "when": "^3.7.8"
