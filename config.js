@@ -6,7 +6,7 @@ dotenv.config();
 
 const config = {
     app: {
-        port: 8000
+        port: process.env.PORT | 8000
     },
     nodered: {
         autoInstallModules: true,
@@ -19,7 +19,15 @@ const config = {
         },
         functionGlobalContext: {}, 
         mongoUrl: process.env.MONGO_URL,
-        storageModule: require("./mongostorage")
+        storageModule: require("./mongostorage"),
+        adminAuth: {
+            type: "credentials",
+            users: [{
+                username: process.env.NODE_RED_USERNAME,
+                password: process.env.NODE_RED_PASSWORD,
+                permissions: "*"
+            }]
+        }
     }       
 };
 
